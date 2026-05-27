@@ -1,0 +1,71 @@
+fastapi
+uvicorn
+websockets
+faster_whisper
+numpy
+soundfile
+
+# <!DOCTYPE html>
+# <html>
+
+# <head>
+#     <title>Live Transcription</title>
+# </head>
+
+# <body>
+
+#     <h1>Real-Time Transcription</h1>
+
+#     <button onclick="startRecording()">
+#         Start Recording
+#     </button>
+
+#     <h2 id="output"></h2>
+
+#     <script>
+
+#         let socket;
+#         let mediaRecorder;
+
+#         async function startRecording() {
+
+#             socket = new WebSocket("ws://localhost:8000/ws");
+
+#              socket.onopen = () => {
+#                 console.log("WebSocket Connected");
+#             };
+
+#             socket.onmessage = (event) => {
+
+#                 document.getElementById("output").innerHTML += event.data + " ";
+
+#             };
+
+#             socket.onclose = () => {
+#                 console.log("WebSocket Closed");
+#             };
+
+#             const stream = await navigator.mediaDevices.getUserMedia({
+#                 audio: true
+#             });
+
+#             mediaRecorder = new MediaRecorder(stream);
+
+#             mediaRecorder.start(2000);
+
+#             mediaRecorder.ondataavailable = async (event) => {
+
+#                 if (event.data.size > 0) {
+
+#                     const arrayBuffer = await event.data.arrayBuffer();
+
+#                     socket.send(arrayBuffer);
+#                 }
+#             };
+#         }
+
+#     </script>
+
+# </body>
+
+# </html>
