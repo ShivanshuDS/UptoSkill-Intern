@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KeyForge — Keyboard Shortcuts Lab</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Background effects -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Command Palette -->
+<div id="palette-overlay">
+  <div id="palette">
+    <div class="palette-header">
+      <span class="palette-search-icon">⌕</span>
+      <input id="palette-input" type="text" placeholder="Type a command or search…" autocomplete="off" />
+      <span class="palette-esc">ESC</span>
+    </div>
+    <div id="palette-results"></div>
+    <div class="palette-footer">
+      <span>↑↓ navigate</span>
+      <span>↵ select</span>
+      <span>ESC close</span>
+    </div>
+  </div>
+</div>
+
+<!-- Help Panel -->
+<div id="help-panel">
+  <div class="help-box">
+    <div class="help-title">Keyboard Reference</div>
+    <div class="help-sub">All available shortcuts in this demo</div>
+    <div id="help-list"></div>
+    <button class="close-help" onclick="closeHelp()">Close — press <strong>?</strong> or <strong>ESC</strong></button>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+    <div class="logo">
+      <div class="logo-icon">⌨️</div>
+      Key Shortcuts
+    </div>
+    <div class="header-hint">
+      <span class="hint-key">Ctrl</span>+<span class="hint-key">K</span>
+      <span>to open palette</span>
+    </div>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">Keyboard Shortcuts </div>
+      <h1>Press any key.<br><span class="grad">Feel the power.</span></h1>
+      <p>An interactive lab to explore keyboard shortcuts, command palettes, and key detection in the browser.</p>
+    </section>
+
+    <!-- Live Key Display -->
+    <div class="key-display-area">
+      <div class="kda-label">Live Key Detection</div>
+      <div class="key-output" id="key-output">
+        <div class="no-key-hint">→ Press any key to see it here</div>
+      </div>
+      <div class="key-action-badge" id="key-action"></div>  
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-lbl">Keys Pressed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-shortcuts">0</div>
+        <div class="stat-lbl">Shortcuts Triggered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-palette">0</div>
+        <div class="stat-lbl">Palette Opens</div>
+      </div>
+    </div>
+
+    <!-- Shortcuts Grid -->
+    <div class="section-header">
+      <div class="section-label">Available Shortcuts</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="shortcuts-grid" id="shortcuts-grid"></div>
+
+    <!-- Action Log -->
+    <div class="section-header">
+      <div class="section-label">Action Log</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div id="action-log">
+      <div class="log-header">Recent Actions</div>
+      <div class="log-entries" id="log-entries">
+        <div class="log-entry">
+          <span class="log-time">--:--:--</span>
+          <span class="log-text" style="color:var(--muted)">Waiting for keyboard input…</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    Built for <span>Keyboard Shortcuts</span> · Press <span>Shift+?</span> for help
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
